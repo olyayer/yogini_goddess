@@ -1,11 +1,11 @@
 class VideosController < ApplicationController
-
   skip_before_action :authenticate_user!
 
-    def index
+  def index
   end
 
   def show
   end
+
 
 end
