@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+
   skip_before_action :authenticate_user!
 
     def index
@@ -6,4 +7,5 @@ class VideosController < ApplicationController
 
   def show
   end
+
 end
