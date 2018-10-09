@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'videos#index'
 
-    resources :videos, :only [:index, :new, :create]
+    resources :videos
     # get 'videos', to: 'videos#index'
     # get 'videos/:id', to: 'videos#show', as: :video
 
