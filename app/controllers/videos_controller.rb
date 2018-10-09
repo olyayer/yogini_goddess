@@ -6,31 +6,18 @@ class VideosController < ApplicationController
     require 'open-uri'
     require 'nokogiri'
 
-    search_keyword = 'yoga'
-
-    url = "https://www.youtube.com/results?search_query=#{search_keyword}"
-    doc = open(url).read
-    parsed_doc = Nokogiri::HTML(doc)
-
-    video_infos = parsed_doc.search('.ytd-simple-endpoint .style-scope .ytd-video-renderer').take(10)
-    videosArray = []
-
-
-    video_infos.each do |video|
-      link = video.attribute('href').value
-      # @videosArray << Video.new(link)
-
-      puts link
+    Nokogiri::HTML(open("http://www.fightmasteryoga.com/30-day-yoga-challenge-for-beginners/").read).search('.BlogList-item-title').each do |video|
+      puts video.text.strip
+      puts "http://www.fightmasteryoga.com"+"#{video.attribute('href').value}"
     end
 
 
 
-
   end
-
-  def show
-
-  end
-
-
 end
+
+    # url = "https://cervejamusa.com/en/points-of-sale/"
+
+    # data =
+
+    # beers =
