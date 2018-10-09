@@ -1,5 +1,9 @@
-<h1>INDEX</h1>
-
-<% @videosArray.each do |beer| %>
-  <li><%= video.link %></li>
-<% end %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Share your videos with the world!</h1>
+    <p>Click the button below to share your video from YouTube.</p>
+    <p>
+      <%= link_to 'Add video now!', new_video_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
+</div>

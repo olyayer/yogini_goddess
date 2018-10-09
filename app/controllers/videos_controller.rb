@@ -2,22 +2,34 @@ class VideosController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @videos = Video.order('created_at DESC')
+  end
 
-    require 'open-uri'
-    require 'nokogiri'
+  def new
+    @video = Video.new
+  end
 
-    Nokogiri::HTML(open("http://www.fightmasteryoga.com/30-day-yoga-challenge-for-beginners/").read).search('.BlogList-item-title').each do |video|
-      puts video.text.strip
-      puts "http://www.fightmasteryoga.com"+"#{video.attribute('href').value}"
-    end
+  def create
+    @video = Video.new(video_params)
+      if @video.save
+        flash[:success] = 'Video added!'
+        redirect_to index_url
+      else
+        render :new
+      end
+  end
+
+  private
+
+  def video_params
+    params.require(:video).permit(:link)
+  end
 
 
+  def show
 
   end
+
 end
 
-    # url = "https://cervejamusa.com/en/points-of-sale/"
 
-    # data =
-
-    # beers =
